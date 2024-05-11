@@ -35,9 +35,9 @@ class FileStorage:
                     class_name = value.get('__class__')
                     if class_name:
                         cls = globals().get(class_name)
-                    if cls:
-                        obj = cls(**value)
-                        self.__object[key] = obj
+                        if cls:
+                            obj = cls(**value)
+                            self.__object[key] = obj
 
                     else:
                         print(f"{class_name} not found")
