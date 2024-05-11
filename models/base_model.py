@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 import uuid
 from datetime import datetime
-from models import storage
 
 
 
@@ -30,6 +29,8 @@ class BaseModel:
 
                     setattr(self, key, value)
         else:
+            from models import storage
+
             self.id = str(uuid.uuid4())
             self.updated_at = datetime.now()
             self.created_at = datetime.now()
@@ -51,6 +52,8 @@ class BaseModel:
             stores the updated time of
             the instance
         """
+        from models import storage
+
         self.updated_at = datetime.now()
         storage.save()
         
