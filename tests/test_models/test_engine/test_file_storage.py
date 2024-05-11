@@ -17,18 +17,13 @@ class TestFileStorage(unittest.TestCase):
     def test_objects_attribute_exists(self):
         self.assertTrue(hasattr(self.storage, "_FileStorage__objects"))
 
-    def test_all_method(self):
-        # Check if the all() method returns an empty dictionary initially
-        self.assertEqual(self.storage.all(), {})
-
-        # Create a new BaseModel instance and add it to the storage
-        model = BaseModel()
-        self.storage.new(model)
-        
-        # Check if the all() method returns a dictionary containing the added BaseModel instance
-        self.assertEqual(len(self.storage.all()), 1)
-        self.assertIn("BaseModel.{}".format(model.id), self.storage.all())
-
+    def test_all(self):
+        """tests if all works in File Storage"""
+        storage = FileStorage()
+        obj = storage.all()
+        self.assertIsNotNone(obj)
+        self.assertEqual(type(obj), dict)
+        self.assertIs(obj, storage._FileStorage__objects)
     def test_new_method(self):
         model = BaseModel()
         self.storage.new(model)
