@@ -6,19 +6,19 @@ import models
 class FileStorage:
 
     __file_path = 'file.json'
-    __object = {}
+    __objects = {}
 
     def all(self):
-        return self.__object
+        return self.__objects
 
     def new(self, obj):
         key = "{}.{}".format(obj.__class__.__name__, self.id)
-        self.__object[key] = obj
+        self.__objects[key] = obj
 
     def save(self):
         serialize_obj = {}
 
-        for key, obj in self.__object.items():
+        for key, obj in self.__objects.items():
             serialize_obj[key] = obj.to_dict()
 
             with open(self.__file_path, 'w') as file:
@@ -37,7 +37,7 @@ class FileStorage:
                         cls = globals().get(class_name)
                         if cls:
                             obj = cls(**value)
-                            self.__object[key] = obj
+                            self.__objects[key] = obj
 
                     else:
                         print(f"{class_name} not found")
