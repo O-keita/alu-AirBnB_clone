@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 import uuid
 from datetime import datetime
+from models import storage
 
 
 class BaseModel:
@@ -9,7 +10,6 @@ class BaseModel:
     for all our models and instances we will be using in this
     project
     """
-
     def __init__(self, *args, **kwargs):
         """
             The args and the keyword args will also be
@@ -32,6 +32,7 @@ class BaseModel:
             self.id = str(uuid.uuid4())
             self.updated_at = datetime.now()
             self.created_at = datetime.now()
+            storage.new(self)
 
     def __str__(self):
         """
@@ -49,6 +50,7 @@ class BaseModel:
             the instance
         """
         self.updated_at = datetime.now()
+        storage.save()
 
     def to_dict(self):
         dic_obj = self.__dict__.copy()
