@@ -37,5 +37,5 @@ class BaseModel:
 
         dic_obj['__class__'] = self.__class__.__name__
         dic_obj['created_at'] = self.created_at.isoformat()
-        dic_obj['updated_at'] = self.update_at.isoformat()
+        dic_obj['updated_at'] = self.updated_at.isoformat()
         return dic_obj
