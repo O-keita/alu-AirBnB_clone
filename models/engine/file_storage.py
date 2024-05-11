@@ -28,7 +28,7 @@ class FileStorage:
             obj_dic[obj] = all_obj[obj].to_dict()
 
         with open(self.__file_path, 'w', encoding='utf-8') as file:
-            json.decoder(obj_dic, file)
+            json.dump(obj_dic, file)
 
 
     def reload(self):
