@@ -14,13 +14,12 @@ class TestBase(unittest.TestCase):
         self.assertIsNotNone(model.updated_at)
 
     def test_save(self):
-        model = BaseModel()
-
-        initial = model.updated_at
-
-        updated = model.save()
-
-        self.assertNotEqual(initial, updated)
+        """ check if date update when save """
+        my_objectupd = BaseModel()
+        first_updated = my_objectupd.updated_at
+        my_objectupd.save()
+        second_updated = my_objectupd.updated_at
+        self.assertNotEqual(first_updated, second_updated)
 
     def test_str(self):
         model = BaseModel()
