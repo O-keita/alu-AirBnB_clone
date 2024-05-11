@@ -40,8 +40,15 @@ class TestBase(unittest.TestCase):
         self.assertEqual(model_dict['id'], model.id)
 
     def test_save(self):
-        model = BaseModel()
-        self.assertListEqual(model.created_at, model.updated_at)
+              model = BaseModel()
+
+              initial = model.updated_at
+
+              model.save()
+
+              updated = model.updated_at
+
+              self.assertNotEqual(initial, updated)
 
 if __name__ == '__main__':
     unittest.main()
