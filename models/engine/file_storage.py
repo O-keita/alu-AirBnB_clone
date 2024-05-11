@@ -1,4 +1,3 @@
-from models.base_model import BaseModel
 import os
 import json
 
