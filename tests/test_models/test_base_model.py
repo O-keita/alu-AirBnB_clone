@@ -31,8 +31,8 @@ class TestBase(unittest.TestCase):
         model = BaseModel()
         model_dict = model.to_dict()
         self.assertIsInstance(model_dict, dict)
-        #   self.assertEqual(model_dict['created_at'], model.created_at)
-        #   self.assertEqual(model_dict['updated_at'], model.updated_at)
+        # self.assertEqual(model_dict['created_at'], model.created_at)
+        # self.assertEqual(model_dict['updated_at'], model.updated_at)
         self.assertEqual(model_dict['id'], model.id)
 
     def test_updated(self):
