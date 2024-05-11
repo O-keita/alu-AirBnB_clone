@@ -12,5 +12,5 @@ Commands like;
 - show <class_name> <id>: Displays details of a specific instance
 - update <class_name> <id> <attribute_name> "<attribute_value>": Updates the attribute of a specific instance
 - all <class_name>: Displays all instances of a specified class
-- destroy <class_name> <id>: Deletes a specific instance
+- destroy <class_name> <id>: Deletes a specific instance.
 
