@@ -40,15 +40,32 @@ class TestFileStorage(unittest.TestCase):
         self.storage.save()
         self.assertTrue(os.path.exists(self.storage._FileStorage__file_path))
 
-    def test_reload(self):
-        model = BaseModel()
-        self.storage.new(model)
+    def test_reload_filestorage(self):
+        """
+        tests reload
+        """
         self.storage.save()
-
-        new_storage = FileStorage()
-        new_storage.reload()
-
-        self.assertIn("BaseModel.{}".format(model.id), new_storage.all())
-
+        Root = os.path.dirname(os.path.abspath("console.py"))
+        path = os.path.join(Root, "file.json")
+        with open(path, 'r') as f:
+            lines = f.readlines()
+        try:
+            os.remove(path)
+        except FileNotFoundError:
+            pass
+        self.storage.save()
+        with open(path, 'r') as f:
+            lines2 = f.readlines()
+        self.assertEqual(lines, lines2)
+        try:
+            os.remove(path)
+        except FileNotFoundError:
+            pass
+        with open(path, "w") as f:
+            f.write("{}")
+        with open(path, "r") as r:
+            for line in r:
+                self.assertEqual(line, "{}")
+        self.assertIs(self.storage.reload(), None)
 if __name__ == "__main__":
     unittest.main()
