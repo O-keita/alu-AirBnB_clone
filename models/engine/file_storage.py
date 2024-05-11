@@ -26,21 +26,12 @@ class FileStorage:
                 json.dump(serialize_obj, file)
 
     def reload(self):
-
+        """ deserializes the JSON file to __objects """
         try:
-            with open(self.__file_path, 'r', encoding="UFT8") as file:
-                data = json.load(file)
-
-                for key, value in data.items():
-                    class_name = value.get('__class__')
-                    if class_name:
-                        cls = globals().get(class_name)
-                        if cls:
-                            obj = cls(**value)
-                            self.__objects[key] = obj
-
-                    else:
-                        print(f"{class_name} not found")
-
+            with open(self.__file_path, 'r', encoding="UTF8") as f:
+                # jlo = json.load(f)
+                for key, value in json.load(f).items():
+                    attri_value = eval(value["__class__"])(**value)
+                    self.__objects[key] = attri_value
         except FileNotFoundError:
             pass
