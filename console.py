@@ -1,8 +1,10 @@
 #!/usr/bin/python3
+"""module documented"""
 import cmd
 
 class HBNBCommand(cmd.Cmd):
     """
+        This will ne the command interpreter
     """
     prompt = "(hbnb) "
 
@@ -20,4 +22,5 @@ class HBNBCommand(cmd.Cmd):
         pass
 
 if __name__ == "__main__":
+    """documented"""
     HBNBCommand().cmdloop()
