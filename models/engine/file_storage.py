@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 import json
-import models
+from models.base_model import BaseModel 
 
 
 class FileStorage:
@@ -26,21 +26,24 @@ class FileStorage:
                 json.dump(serialize_obj, file)
 
     def reload(self):
-
         try:
-            with open(self.__file_path, 'r', encoding="UFT8") as file:
+            with open(self.__file_path, 'r', encoding="utf-8") as file:
                 data = json.load(file)
 
                 for key, value in data.items():
                     class_name = value.get('__class__')
+
                     if class_name:
                         cls = globals().get(class_name)
                         if cls:
                             obj = cls(**value)
                             self.__objects[key] = obj
-
+                        else:
+                            print(f"Class {class_name} not found")
                     else:
-                        print(f"{class_name} not found")
+                        print("Class name not found in serialized data")
 
         except FileNotFoundError:
-            pass
+            print(f"File '{self.__file_path}' not found")
+        except json.JSONDecodeError as e:
+            print(f"Error decoding JSON: {e}")
