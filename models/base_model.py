@@ -10,10 +10,25 @@ class BaseModel:
     project
     """
 
-    def __init__(self):
-        self.id = str(uuid.uuid4())
-        self.created_at = datetime.now()
-        self.updated_at = datetime.now()
+    def __init__(self, *args, **kwargs):
+        """
+            The args and the keyword args will also be
+            considered when making a model.
+            if there is kwargs, we will use those
+            for our objects, else we use the other ways
+            round
+        """
+        if kwargs:
+            for key, value in kwargs.items():
+                if key != '__class__':
+                    if key in ['created_at', 'updated_at']:
+                        value = datetime.strptime(
+                            value,
+                            '%Y-%m-%dT%H:%M:%S.%f'
+                        )
+                    self.id = str(uuid.uuid4())
+
+                setattr(self, key, value)
 
     def __str__(self):
         """
@@ -34,7 +49,6 @@ class BaseModel:
 
     def to_dict(self):
         dic_obj = self.__dict__.copy()
-
         dic_obj['__class__'] = self.__class__.__name__
         dic_obj['created_at'] = self.created_at.isoformat()
         dic_obj['updated_at'] = self.updated_at.isoformat()

@@ -13,7 +13,6 @@ class TestBase(unittest.TestCase):
         self.assertIsNotNone(model.created_at)
         self.assertIsNotNone(model.updated_at)
 
-
     def test_save(self):
         model = BaseModel()
 
@@ -23,13 +22,11 @@ class TestBase(unittest.TestCase):
 
         self.assertNotEqual(initial, updated)
 
-
     def test_str(self):
         model = BaseModel()
 
         self.assertTrue(str(model).startswith('[BaseModel]'))
         self.assertIn(model.id, str(model))
-            #self.assertIs(str(model.__dict__), str(model))
 
     def test_to_dict(self):
         model = BaseModel()
@@ -40,15 +37,16 @@ class TestBase(unittest.TestCase):
         self.assertEqual(model_dict['id'], model.id)
 
     def test_save(self):
-              model = BaseModel()
+        model = BaseModel()
 
-              initial = model.updated_at
+        initial = model.updated_at
 
-              model.save()
+        model.save()
 
-              updated = model.updated_at
+        updated = model.updated_at
 
-              self.assertNotEqual(initial, updated)
+        self.assertNotEqual(initial, updated)
+
 
 if __name__ == '__main__':
     unittest.main()
