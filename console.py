@@ -50,12 +50,12 @@ class HBNBCommand(cmd.Cmd):
         commands = shlex.split(arg)
 
         if len(commands) == 0:
-            print("** class name missing *")
+            print("** class name missing **")
         elif len(commands) == 1:
             print("** instance id missing **")
 
         elif commands[0] not in self.valid_classes:
-            print("** class doesn't exist **")
+            print("** class name missing **")
 
         else:
 
@@ -131,7 +131,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
         
         elif command[0] not in self.valid_classes:
-            print("* class doesn't exist **")
+            print("** class doesn't exist **")
 
         elif len(command) == 1:
             print("** instance id missing **")
