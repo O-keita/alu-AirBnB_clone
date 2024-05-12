@@ -12,11 +12,10 @@ class TestReview(unittest.TestCase):
     def test_docstring(self):
         '''test if funcions, methods, classes
         and modules have docstring'''
-        # msj = "Módulo does not has docstring"
-        # self.assertIsNotNone(models.review.__doc__, msj)  # Modules
-        # msj = "Clase does not has docstring"
-        # self.assertIsNotNone(Review.__doc__, msj)  # Classes
-        pass
+        msj = "Módulo does not has docstring"
+        self.assertIsNotNone(models.review.__doc__, msj)  # Modules
+        msj = "Clase does not has docstring"
+        self.assertIsNotNone(Review.__doc__, msj)  # Classes
 
     def test_executable_file(self):
         '''test if file has permissions u+x to execute'''
@@ -27,8 +26,8 @@ class TestReview(unittest.TestCase):
         is_write_true = os.access('models/review.py', os.W_OK)
         self.assertTrue(is_write_true)
         # Check for execution access
-        # is_exec_true = os.access('models/review.py', os.X_OK)
-        # self.assertTrue(is_exec_true)
+        is_exec_true = os.access('models/review.py', os.X_OK)
+        self.assertTrue(is_exec_true)
 
     def test_init_Review(self):
         """test if an object is an type Review"""
