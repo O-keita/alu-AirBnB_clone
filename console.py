@@ -4,6 +4,11 @@ import cmd
 import shlex
 from models.base_model import BaseModel
 from models.user import User
+from models.place import Place
+from models.amenity import Amenity
+from models.user import User
+from models.state import State
+from models.city import City
 import models
 
 
@@ -12,7 +17,7 @@ class HBNBCommand(cmd.Cmd):
         This will ne the command interpreter
     """
 
-    valid_classes = ['BaseModel', 'User']
+    valid_classes = ['BaseModel', 'User','State', "Review", 'Place', 'City', 'Amenity' ]
 
     prompt = "(hbnb) "
 
