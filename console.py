@@ -88,6 +88,7 @@ class HBNBCommand(cmd.Cmd):
 
             if key in myobj:
                 del myobj[key]
+                models.storage.save()
             else:
                 print("** no instance found **")
 
