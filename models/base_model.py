@@ -3,7 +3,6 @@ import uuid
 from datetime import datetime
 
 
-
 class BaseModel:
     """
     This is the base model, a foundation model
@@ -56,7 +55,6 @@ class BaseModel:
 
         self.updated_at = datetime.now()
         storage.save()
-        
 
     def to_dict(self):
         dic_obj = self.__dict__.copy()

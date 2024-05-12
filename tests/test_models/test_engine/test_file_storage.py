@@ -3,6 +3,7 @@ from models.engine.file_storage import FileStorage
 from models.base_model import BaseModel
 import os
 
+
 class TestFileStorage(unittest.TestCase):
     def setUp(self):
         self.storage = FileStorage()
@@ -24,6 +25,7 @@ class TestFileStorage(unittest.TestCase):
         self.assertIsNotNone(obj)
         self.assertEqual(type(obj), dict)
         self.assertIs(obj, storage._FileStorage__objects)
+
     def test_new_method(self):
         model = BaseModel()
         self.storage.new(model)
@@ -62,5 +64,7 @@ class TestFileStorage(unittest.TestCase):
             for line in r:
                 self.assertEqual(line, "{}")
         self.assertIs(self.storage.reload(), None)
+
+
 if __name__ == "__main__":
     unittest.main()

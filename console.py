@@ -5,6 +5,7 @@ import shlex
 from models.base_model import BaseModel
 import models
 
+
 class HBNBCommand(cmd.Cmd):
     """
         This will ne the command interpreter
@@ -42,6 +43,7 @@ class HBNBCommand(cmd.Cmd):
             new_class = BaseModel()
             new_class.save()
             print(new_class.id)
+
     def do_show(self, arg):
         """
         Prints the string representation of
@@ -92,7 +94,6 @@ class HBNBCommand(cmd.Cmd):
             else:
                 print("** no instance found **")
 
-
     def do_all(self, arg):
         """
             Prints all string representation
@@ -115,22 +116,18 @@ class HBNBCommand(cmd.Cmd):
                 if key.split(".")[0] == commands[0]:
 
                     print(str(value))
-                
-            
 
     def do_update(self, arg):
         """  Updates an instance based on the class
              name and id by adding or updating attribute
              (save the change into the JSON file)."""
-    
+
         command = shlex.split(arg)
         myobj = models.storage.all()
 
-
-
         if len(command) == 0:
             print("** class name missing **")
-        
+
         elif command[0] not in self.valid_classes:
             print("** class doesn't exist **")
 
@@ -160,7 +157,8 @@ class HBNBCommand(cmd.Cmd):
                     pass
                 setattr(obj, attr_name, attr_value)
                 obj.save()
-        
+
+
 if __name__ == "__main__":
     """documented"""
     HBNBCommand().cmdloop()
