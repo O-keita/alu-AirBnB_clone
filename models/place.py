@@ -3,6 +3,7 @@ from models.base_model import BaseModel
 """This is a doc string"""
 
 class Place(BaseModel):
+    """this is a docstr"""
     """
         city_id: string - empty string: it will be the City.id
         user_id: string - empty string: it will be the User.id
