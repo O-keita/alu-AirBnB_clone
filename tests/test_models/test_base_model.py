@@ -47,5 +47,16 @@ class TestBase(unittest.TestCase):
         self.assertNotEqual(initial, updated)
 
 
+    def test_to_dict_contains_classname(self):
+        """
+        Test if the dictionary returned by to_dict() contains the class name.
+        """
+        model = BaseModel()
+        model_dict = model.to_dict()
+        self.assertIn('__class__', model_dict)
+        self.assertEqual(model_dict['__class__'], 'BaseModel')
+
+
+
 if __name__ == '__main__':
     unittest.main()
