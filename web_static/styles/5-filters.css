@@ -20,9 +20,31 @@
   height: 48px;
   border-radius: 4px;
   margin-right: 30px;
+  cursor: pointer;
 }
 
 .filters button a {
   text-decoration: none;
   color: #ffffff;
+}
+.location,
+.amenities {
+  height: 100%;
+  width: 25%;
+  text-align: center;
+}
+.location {
+  border-right: 1px solid #dddddd;
+}
+.location h3,
+.amenities h3 {
+  font-weight: 600;
+  margin-bottom: 0;
+}
+
+.location h4,
+.amenities h4 {
+  font-weight: 400;
+  margin: 0;
+  font-size: 14px;
 }
