@@ -1,9 +1,9 @@
-##alu-AirBnB_clone
-
-#Description of the project:
+# alu-AirBnB_clone
+ 
+## Description of the project:
 This project is an AirBnB clone command-line interpreter which allows users to create, update, and delete objects within the AirBnB system. 
 
-#Description of the command interpreter:
+## Description of the command interpreter:
 Sarting a command interpreter, you simply run the executable called console.py, which would lunch the ineractive command-line shell. 
 
 Once the command interpreter is running, you can enter commands to interact with the AirBnB system. 
